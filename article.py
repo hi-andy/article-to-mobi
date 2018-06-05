@@ -58,5 +58,5 @@ class Article(object):
                 body += str(line) + '\n'
             body = body.strip()
             articles.append([title, body, author, publish_time, url])
-            break
+
         return articles
