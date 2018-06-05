@@ -9,6 +9,9 @@ class Article(object):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.62 Safari/537.36"
     }
 
+    def __init__(self, url):
+        self.main_url = url
+
     def get_url(self, main_url):
         response = requests.get(main_url)
         soup = bs4.BeautifulSoup(response.text, "html5lib")
@@ -17,7 +20,8 @@ class Article(object):
             urls = [main_url]
         return urls
 
-    def get_article(self, urls):
+    def get_article(self):
+        urls = self.get_url(self.main_url)
         articles = []
         for url in urls:
             response = requests.get(url)
@@ -58,5 +62,5 @@ class Article(object):
                 body += str(line) + '\n'
             body = body.strip()
             articles.append([title, body, author, publish_time, url])
-
+            # break
         return articles
