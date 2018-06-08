@@ -3,12 +3,12 @@ import os
 
 class File(object):
 
-    def out_mobi_file(self, path, book_name, articles):
+    def out_mobi(self, path, book_name, articles):
 
-        opf_item = ''
-        opf_itemref = ''
-        ncx_item = ''
-        content_item = ''
+        opf_item = []
+        opf_itemref = []
+        ncx_item = []
+        content_item = []
 
         if not os.path.exists(path):
             os.makedirs(path)
@@ -23,24 +23,23 @@ class File(object):
             self.out_html(path, full_file_name, title, body)
 
             # opf 列表
-            opf_item += '<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>'.format(file_name,
-                                                                                                     full_file_name) + '\n'
-            opf_itemref += '<itemref idref="%s"/>' % file_name + '\n'
+            opf_item.append('<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>\n'.format(file_name, full_file_name))
+            opf_itemref.append('<itemref idref="%s"/>\n' % file_name)
 
             # 目录列表
-            content_item += '\t\t<li><a href="{0}">{1}</a></li>'.format(full_file_name, title) + '\n'
+            content_item.append('\t\t<li><a href="{0}">{1}</a></li>\n'.format(full_file_name, title))
 
             # ncx 列表
-            ncx_item += ('\t<navPoint id="navpoint-{0}" playOrder="{1}">\n'
-                         '\t\t<navLabel>\n'
-                         '\t\t\t<text>{2}</text>\n'
-                         '\t\t</navLabel>\n'
-                         '\t\t<content src="{3}"/>\n'
-                         '\t</navPoint>'.format((index + 1), (index + 1), title, full_file_name) + '\n')
+            ncx_item.append('\t<navPoint id="navpoint-{0}" playOrder="{1}">\n'
+                            '\t\t<navLabel>\n'
+                            '\t\t\t<text>{2}</text>\n'
+                            '\t\t</navLabel>\n'
+                            '\t\t<content src="{3}"/>\n'
+                            '\t</navPoint>\n'.format((index + 1), (index + 1), title, full_file_name))
 
-        self.out_content(path, content_item)
-        self.out_ncx(path, book_name, ncx_item)
-        self.out_opf(path, book_name, opf_item, opf_itemref)
+        self.out_content(path, ''.join(content_item))
+        self.out_ncx(path, book_name, ''.join(ncx_item))
+        self.out_opf(path, book_name, ''.join(opf_item), ''.join(opf_itemref))
 
     # 生成 ncx
     def out_ncx(self, path, book_name, ncx_item):
