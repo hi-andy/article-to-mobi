@@ -6,6 +6,9 @@ import requests
 
 class Article(object):
 
+    def __init__(self, url):
+        self.main_url = url
+
     def get_url(self, main_url):
         response = requests.get(main_url)
         soup = bs4.BeautifulSoup(response.text, "html5lib")
@@ -14,7 +17,8 @@ class Article(object):
             urls = [main_url]
         return urls
 
-    def get_article(self, urls):
+    def get_article(self):
+        urls = self.get_url(self.main_url)
         articles = []
         for url in urls:
             response = requests.get(url)
@@ -55,5 +59,5 @@ class Article(object):
                 body += str(line) + '\n'
             body = body.strip()
             articles.append([title, body, author, publish_time, url])
-
+            # break
         return articles
