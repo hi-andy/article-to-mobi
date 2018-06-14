@@ -29,11 +29,14 @@ class Article(object):
             [s.extract() for s in soup('img')]
 
             # 匹配标题，去除首尾空白
-            rough_title = soup.select('h2.rich_media_title')[0].get_text()
-            js_title = re.sub('\s+', '', rough_title)
-            title = re.match(r'.*document\.write\("(.*)"\);}$', js_title).group(1)
+            title = soup.select('h2.rich_media_title')[0].get_text()
+            title = re.sub('\s+', '', title)
+            # 如果标题出问题打开下面一条注释，多匹配一次。
+            # title = re.match(r'.*document\.write\("(.*)"\);}$', js_title).group(1)
+
             # 匹配作者
             author = re.sub('\s+', '', soup.select('span#profileBt a')[0].get_text())
+
             # 发布时间
             publish_time = 000
             # body = soup.select('div.rich_media_content ')[0].get_text().strip()

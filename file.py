@@ -23,8 +23,8 @@ class File(object):
             self.out_html(path, full_file_name, title, body)
 
             # opf 列表
-            opf_item.append('<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>\n'.format(file_name, full_file_name))
-            opf_itemref.append('<itemref idref="%s"/>\n' % file_name)
+            opf_item.append('\t<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>\n'.format(file_name, full_file_name))
+            opf_itemref.append('\t<itemref idref="%s"/>\n' % file_name)
 
             # 目录列表
             content_item.append('\t\t<li><a href="{0}">{1}</a></li>\n'.format(full_file_name, title))
@@ -65,7 +65,7 @@ class File(object):
 
     # 生成 opf 文件
     def out_opf(self, path, book_name, opf_item, opf_itemref):
-        with open(path + 'book.opf', 'a', encoding='utf-8') as f:
+        with open(path + book_name + '.opf', 'a', encoding='utf-8') as f:
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
                     '<package unique-identifier="uid" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:asd="http://www.idpf.org/asdfaf">\n'
                     '<metadata>\n'
@@ -83,11 +83,11 @@ class File(object):
                     '<manifest>\n'
                     '\t<item id="content" media-type="text/x-oeb1-document" href="toc.html"></item>\n'
                     '\t<item id="ncx" media-type="application/x-dtbncx+xml" href="toc.ncx"/>\n'
-                    '\t{1}'
+                    '{1}'
                     '</manifest>\n'
                     '<spine toc="ncx">\n'
                     '\t<itemref idref="content"/>\n'
-                    '\t{2}'
+                    '{2}'
                     '</spine>\n'
                     '<guide>\n'
                     '\t<reference type="toc" title="目录" href="toc.html"/>\n'
