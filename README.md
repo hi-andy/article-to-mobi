@@ -8,4 +8,4 @@
         URL: 要抓取的文章 url 地址,　可以是一个文章 URL 列表.　示例 URL: https://mp.weixin.qq.com/s/cf1qc0qfeivEBPGIAmsaGA
     
     运行：python3 generate_mobi.py 电子书名称　文章URL
-        执行成功会在当前目录生成　`book.mobi` 文件。
+        执行成功会在当前目录生成指定电子书名称的　`.mobi` 文件。
