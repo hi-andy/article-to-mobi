@@ -7,4 +7,6 @@
     修改 from xxx_article import XXX 导入的文章模型
     修改 articles = XXX(temp_path).get_article() 获取文章的模型
 
+    若要获取其它站点的信息，需依照实现 xxx_article.py 文章模型。在使用的时候也需要注意相应模型的内部实现，修改相应的 url 处理方式。
+
     示例 URL: https://mp.weixin.qq.com/s/cf1qc0qfeivEBPGIAmsaGA
