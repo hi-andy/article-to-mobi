@@ -1,6 +1,8 @@
-﻿<html><head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-</head><body>
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
 <h2> 发行说明 </h2>
 
 <h3> Kindlegen 版本 2.9 build 1028-0897292</h3>
@@ -13,8 +15,10 @@
 <h3> Kindlegen 版本 2.8 build 0208-797bf75</h3>
 <pre>
 	   - 转换成XMDF文件格式的支持已被添加。更多信息，请参阅Kindle出版指南。
-	   - 已添加支持epub3 toc nav的元件。这相当于NCX（也称为NCX TOC）里的navMap元件。如果两种元件同时给出，Epub3 TOC nav元件优于NCX navMap元件。但是，如果没有特别指定NAV HTML，我们将退回NCX（如果存在的话）。如果我们不退回NCX，系统将会出错。关于EPUB3 toc nav的更多信息，请参阅<a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">这里</a>。
-	   - 已添加支持epub3 landmarks nav元件。这相当于OPF guide 元件。 如果两种元件同时给出，Epub3 landmarks nav元件优于OPF guide 元件。 关于EPUB3 landmarks nav 的更多信息，请参阅<a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">这里</a>。
+	   - 已添加支持epub3 toc nav的元件。这相当于NCX（也称为NCX TOC）里的navMap元件。如果两种元件同时给出，Epub3 TOC nav元件优于NCX navMap元件。但是，如果没有特别指定NAV HTML，我们将退回NCX（如果存在的话）。如果我们不退回NCX，系统将会出错。关于EPUB3 toc nav的更多信息，请参阅<a
+        href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">这里</a>。
+	   - 已添加支持epub3 landmarks nav元件。这相当于OPF guide 元件。 如果两种元件同时给出，Epub3 landmarks nav元件优于OPF guide 元件。 关于EPUB3 landmarks nav 的更多信息，请参阅<a
+        href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">这里</a>。
 	   - 支持用于指定以下epub3格式的元数据
 	       - 使用程序清单中的属性指定封面图片。
 	       - 使用“rendition:layout”属性指定图书布局。
@@ -106,7 +110,7 @@
 	   - 已添加最大图像尺寸为 128KB 的支持。超过 128KB 的图像将自动重新调整以满足此新限制。
 	   - 已添加 Kindle 内容中音频和视频多媒体的支持。
 	   - 在某些情况下通过 NCX 处理修复缺陷。
-</pre>  
+</pre>
 
 <h3>Kindlegen 版本 1.0 build 87</h3>
 <pre>
@@ -791,4 +795,5 @@
 	  - 已添加在 Huffman 代码输出过程中将错误写至临时文件的测试和
 	    错误报告 
 </pre>
-</body></html>
+</body>
+</html>

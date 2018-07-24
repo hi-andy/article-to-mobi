@@ -1,20 +1,25 @@
-﻿<html><head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-</head><body>
-<h2> ご注意 <h2>
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
+<h2> ご注意
+    <h2>
 
-<h3>Kindlegen バージョン 2.9 ビルド 1028-0897292（Kindlegen version 2.9 build 1028-0897292）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.9 ビルド 1028-0897292（Kindlegen version 2.9 build 1028-0897292）</h3>
+        <pre>
 	   - 本の背の画像に指定される場合のページレイアウトの属性(double page spread、facing pages、blank page)をサポートしています。
 	   - 複数のバグ修正
        
     以下で最新のリリースノートおよび既知の問題をご確認ください https://kindlegen.s3.amazonaws.com/manual.html
 </pre>
-<h3>Kindlegen バージョン 2.8 ビルド 0208-797bf75（Kindlegen version 2.8 build 0208-797bf75）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.8 ビルド 0208-797bf75（Kindlegen version 2.8 build 0208-797bf75）</h3>
+        <pre>
 	   - XMDFファイルフォーマットの変換機能が追加された。詳細については、Kindle 出版ガイドラインをご参照ください。
-	   - epub3 toc nav エレメントのサポートが追加されました。これは、NCXのnavMapエレメントと同等のものです(NCX tocです)。両方が与えられた場合はNCX navMapエレメントよりEpub3 toc navエレメントが優先されます。Nav HTMLが仕様に基づいて指定されていない場合は、NCXが存在すれは、、NCXにフォールバックします。NCXへのフォールバックができない場合は、エラーになります。EPUB3 toc navの仕様についての詳細は<a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">こちら</a>をご参照ください。
-	   - epub3 landmarks nav エレメントのサポートが追加されました。これは、OPF guideエレメントと同等のものです。両方が与えられた場合はOPF guideエレメントよりEpub3 landmarks navエレメントが優先されます。EPUB3 landmarks navの仕様についての詳細は<a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">こちら</a>をご参照ください。
+	   - epub3 toc nav エレメントのサポートが追加されました。これは、NCXのnavMapエレメントと同等のものです(NCX tocです)。両方が与えられた場合はNCX navMapエレメントよりEpub3 toc navエレメントが優先されます。Nav HTMLが仕様に基づいて指定されていない場合は、NCXが存在すれは、、NCXにフォールバックします。NCXへのフォールバックができない場合は、エラーになります。EPUB3 toc navの仕様についての詳細は<a
+                href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">こちら</a>をご参照ください。
+	   - epub3 landmarks nav エレメントのサポートが追加されました。これは、OPF guideエレメントと同等のものです。両方が与えられた場合はOPF guideエレメントよりEpub3 landmarks navエレメントが優先されます。EPUB3 landmarks navの仕様についての詳細は<a
+                href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">こちら</a>をご参照ください。
 	   - epub3形式で以下メタデータを指定するためのサポート
 	       - Manifest  でのpropertiesアトリビュートを使用してcover画像を指定する
 	       - “rendition:layout”プロパティを持つブックレベルのレイアウトを指定する
@@ -27,8 +32,8 @@
 	   - Galician語のためにサポート(gl, gl-es)
 </pre>
 
-<h3>Kindlegen バージョン 2.7 ビルド 1019-d6e4792（Kindlegen version 2.7 build 1019-d6e4792）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.7 ビルド 1019-d6e4792（Kindlegen version 2.7 build 1019-d6e4792）</h3>
+        <pre>
 	   - HTML および CSS ファイルを直接参照できるように、画像および埋め込みフォントのデータ URI サポート （データ URI の詳細については、 http://dataurl.net をご参照ください）。
 	   - 日本語の縦書方向のレンダリングおよび綴じ方向指定のサポート。メタタグを使用して値を OPF ファイルで指定可（例: &lt;meta name=”primary-writing-mode” content=”vertical-rl” /&gt;）。有効な値は horizontal-lr、vertical-lr、horizontal-rl、vertical-rl。
 	   - 見開きページのサポート。itemref タグの“properties”属性を通じて、値を OPF で指定可。有効な値は facing-page-left、facing-page-right、page-spread-left、page-spread-right。
@@ -41,8 +46,8 @@
 	   - section、aside、footer、figure、figcaption、article タグを適切に処理。
 </pre>
 
-<h3>Kindlegen バージョン 2.5 ビルド 0626-3a91e28（Kindlegen version 2.5 build 0626-3a91e28）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.5 ビルド 0626-3a91e28（Kindlegen version 2.5 build 0626-3a91e28）</h3>
+        <pre>
 	   - 透明なPNG変換を改善：透明なPNG画像（現在はJPEGに変換）は白い背景を使用します。以前は黒い背景を使用していたため読書体験は劣化しました。
 	   - Mobi7でCSSプロパティの使用(“margin-top: 0px” と “margin-bottom: 0px”)による無駄な改行が修正されました。
 	   - 箇条書きと番号付きリストに関連したMobi7のインデントの問題を解決しました。これは、CSSプロパティの”マージン左”を箇条書きと番号付きリストと一緒に使用したためであった。Mobi7では、 "マージン左"プロパティは、箇条書きと段落番号付きリストでは無視されています。これは KF8 にも維持し続けられます。
@@ -56,39 +61,39 @@
 	   - ユーザがhttps://kindlegen.s3.amazonaws.com/manual.htmlにある最新のリリースノートを参照できるよう、Kindlegenの”-releasenotes"オプションを更新しました。
 </pre>
 
-<h3>Kindlegen バージョン 2.4 ビルド 69900（Kindlegen version 2.4 build 69900）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.4 ビルド 69900（Kindlegen version 2.4 build 69900）</h3>
+        <pre>
 	   - 中国語および日本語の言語でローカライズされたインタフェースのサポートが追加されました。
 	   - mobiは"display:none"のCSSプロパティのサポートが追加されました。
 	   - 古いデバイスのソフトハイフンを削除し、それらのみKF8デバイス上に表示することができました。
 	   - 複数のバグを修正しました。
 </pre>
 
-<h3>Kindlegen バージョン 2.3 ビルド 36043（Kindlegen version 2.3 build 36043）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.3 ビルド 36043（Kindlegen version 2.3 build 36043）</h3>
+        <pre>
 	   - 新しい CSS メディアタイプをサポートし、mobi および KF8 に特徴的なスタイルを提供。
 	   - 漫画および児童図書の画質を改善。
 	   - リフロー可能な本のデュアルカバー画像を修正。
 </pre>
 
-<h3>Kindlegen バージョン 2.2 ビルド 35621（Kindlegen version 2.2 build 35621）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.2 ビルド 35621（Kindlegen version 2.2 build 35621）</h3>
+        <pre>
 	   - KindleGen の前バージョンからのバグフィクス
 </pre>
 
-<h3>Kindlegen バージョン 2.1 ビルド 35388（Kindlegen version 2.1 build 35388）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.1 ビルド 35388（Kindlegen version 2.1 build 35388）</h3>
+        <pre>
 	   - 児童図書および漫画のサポートを追加。
 	   - KindleGen の前バージョンからのバグフィクス
 </pre>
 
-<h3>Kindlegen バージョン 2.0 ビルド 34608（Kindlegen version 2.0 build 34608）</h3>
-<pre>
+        <h3>Kindlegen バージョン 2.0 ビルド 34608（Kindlegen version 2.0 build 34608）</h3>
+        <pre>
 	   - HTML5/CSS3 のサポートで、向上した mobi を作成できるように Kindlegen を拡張。
 </pre>
 
-<h3>Kindlegen バージョン 1.2 ビルド 34608（Kindlegen version 1.2 build 34608）</h3>
-<pre>
+        <h3>Kindlegen バージョン 1.2 ビルド 34608（Kindlegen version 1.2 build 34608）</h3>
+        <pre>
 	   - NCX pageLists または page-map xml を介して本のページ番号を受け入れるサポートを追加。
 	   - 生成される本のデフォルトのエンコーディングを「utf-8」に変更。Win-1252 で本をエンコードするには、コマンドラインオプション「-western」を使用。
 	   - ラテン語（ISO-639-1 コード: la）のサポートを追加。
@@ -96,26 +101,26 @@
 	   - Kindlegen の旧バージョンからのバグフィクス。
 </pre>
 
-<h3>Kindlegen バージョン 1.1 ビルド 99（Kindlegen version 1.1 build 99）</h3>
-<pre>
+        <h3>Kindlegen バージョン 1.1 ビルド 99（Kindlegen version 1.1 build 99）</h3>
+        <pre>
 	   - このアップデートはマイナーな機能拡張とバグフィクスを提供。
 </pre>
 
-<h3>Kindlegen バージョン 1.1 ビルド 98（Kindlegen version 1.1 build 98）</h3>
-<pre>
+        <h3>Kindlegen バージョン 1.1 ビルド 98（Kindlegen version 1.1 build 98）</h3>
+        <pre>
 	   - 最高 128 KB までの画像サイズのサポートを追加。128 KB 以上の画像は、自動的にこの新規制限を満たすように再調整される。
 	   - Kindle コンテンツ内の動画およびオーディオのマルチメディアのサポートを追加。
 	   - 特定のケースにおける NCX 処理のバグを修正。
 	   
 </pre>
 
-<h3>Kindlegen バージョン 1.0 ビルド 87（Kindlegen version 1.0 build 87）</h3>
-<pre>
+        <h3>Kindlegen バージョン 1.0 ビルド 87（Kindlegen version 1.0 build 87）</h3>
+        <pre>
 	   - Kindlegen が Mac でサポートされるようになった。
 </pre>
 
-<h3>Kindlegen バージョン 1.0 ビルド 86（Kindlegen version 1.0 build 86）</h3>
-<pre>
+        <h3>Kindlegen バージョン 1.0 ビルド 86（Kindlegen version 1.0 build 86）</h3>
+        <pre>
 	   - Kindlegen が Linux でサポートされるようになった。 
 	   - 画像圧縮アルゴリズムを改善。
 	   - Macintosh のエンコードをサポート。 
@@ -693,4 +698,5 @@ Mobigen バージョン
 
 	  - ハフマンコードの出力の際、一時ファイルへのエラー書き込みにおけるテストおよびエラー報告を追加。 
 </pre>
-</body></html>
+</body>
+</html>

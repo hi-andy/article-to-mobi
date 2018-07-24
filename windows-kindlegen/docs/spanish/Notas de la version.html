@@ -1,6 +1,8 @@
-﻿<html><head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-</head><body>
+﻿<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<body>
 <h2> Notas de la versión</h2>
 
 <h3>Kindlegen versión 2.9, compilación 1029-0897292</h3>
@@ -13,8 +15,10 @@
 <h3>Kindlegen versión 2.8, compilación 0208-797bf75</h3>
 <pre>
 	   - Support for converting XMDF file format has been added. Refer Kindle Publishing Guidelines for more info.
-	   - Support for epub3 toc nav element has been added. This is equivalent to the navMap element in the NCX (also known as NCX toc). Epub3 toc nav element is preferred over NCX navMap element, if both are given. But if the Nav HTML is not specified according to the specification, we will try to fall back to NCX if one exists. If we cannot fallback to NCX, then we would error out. Refer <a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">here</a> for more info about EPUB3 toc nav specification.
-	   - Support for epub3 landmarks nav element has been added. This is equivalent to the OPF guide element. Epub3 landmarks nav element is preferred over OPF guide element, if both are given. Refer <a href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">here</a> for more info about EPUB3 landmarks nav specification.
+	   - Support for epub3 toc nav element has been added. This is equivalent to the navMap element in the NCX (also known as NCX toc). Epub3 toc nav element is preferred over NCX navMap element, if both are given. But if the Nav HTML is not specified according to the specification, we will try to fall back to NCX if one exists. If we cannot fallback to NCX, then we would error out. Refer <a
+        href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-toc">here</a> for more info about EPUB3 toc nav specification.
+	   - Support for epub3 landmarks nav element has been added. This is equivalent to the OPF guide element. Epub3 landmarks nav element is preferred over OPF guide element, if both are given. Refer <a
+        href="http://idpf.org/epub/30/spec/epub30-contentdocs-20111011.html#sec-xhtml-nav-def-types-landmarks">here</a> for more info about EPUB3 landmarks nav specification.
 	   - Support for specifying the following metadatas in epub3 format
 	       - Specifying cover image using properties attribute in manifest
 	       - Specifying book level layout with “rendition:layout” property
@@ -63,7 +67,7 @@
 	   - Eliminado blandos guiones para los dispositivos más antiguos y les permitió ser visible sólo en Rf8 dispositivos.
 	   - Varias correcciones de errores.
 </pre>
-	
+
 <h3>Kindlegen versión 2.3, compilación 36043</h3>
 <pre>
 	   - Apoyado los nuevos tipos de medios CSS para proporcionar distintos estilos a mobi y KF8.
@@ -138,7 +142,8 @@
 	  - Depuración de fallos: Se ha reparado la transformación de CSS, que antes podían producir etiquetas sin cerrar que no afectaban al formato HTML. 
 	  - Novedad: Se incluye el conmutador de modo verboso. La opción predeterminada de salida no es verbosa. 
 	  - Novedad: Análisis previo de la etiqueta &lt;pre&gt; para que funcione en el lector. 
-	  - Novedad: Ajuste de líneas en estilos de fuente monoespacio en etiquetas &lt;tt&gt; que las fuentes monoespacio funcionen en lectores que no admitan la función <font face=>. 
+	  - Novedad: Ajuste de líneas en estilos de fuente monoespacio en etiquetas &lt;tt&gt; que las fuentes monoespacio funcionen en lectores que no admitan la función <font
+        face=>.
 	  - Novedad: Extensiones de metadatos de NCX 
 
 <h3>V 6.2, compilación 41</h3>
@@ -679,4 +684,5 @@
 	    al generar la salida de códigos Huffman 
 
 </pre>
-</body></html>
+</body>
+</html>

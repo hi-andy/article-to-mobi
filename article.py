@@ -1,66 +1,50 @@
 import re
 
-import bs4
-import requests
+from image import Image
 
 
 class Article(object):
 
-    def __init__(self, url):
-        self.main_url = url
+    def article_body(self, body, image_path):
+        image = Image()
+        list_body = []
+        for line in body:
 
-    def get_url(self, main_url):
-        response = requests.get(main_url)
-        soup = bs4.BeautifulSoup(response.text, "html5lib")
-        urls = [a.attrs.get('href') for a in soup.select('ul.list-paddingleft-2 a[href^=http://mp.weixin.qq.com/s?]')]
-        if not urls:
-            urls = [main_url]
-        return urls
+            line = str(line).strip()
 
-    def get_article(self):
-        urls = self.get_url(self.main_url)
-        articles = []
-        for url in urls:
-            response = requests.get(url)
-            soup = bs4.BeautifulSoup(response.text, "html5lib")
+            # 先把 img 标签的 src 取出。然后去除所有标签属性、内联样式
+            # 因为原有样式在 Kindle 表现不佳，并且生成电子书的时候可能会有警告（line-height)。
+            # 若要改变书的排版布局，也可以在此为指定的标签添加自己的样式：class,id。然后再定义自己的 css 文件即可。
+            src = re.search('<img\s+?.*?src="(\s*.+?)?"', line)
+            line = re.sub('(\s+?[\w\-*\w*]+?=".+?")+?', '', line)
 
-            # 删除看似无用的标签：section img
-            [s.extract() for s in soup('section')]
-            [s.extract() for s in soup('img')]
+            # 保存插图到本地
+            if src is not None:
+                print('原始图片：' + src.group(1))
+                print('本地图片地址：' + image.save(src.group(1), image_path))
+                local_src = './images/' + image.save(src.group(1), image_path)  # 返回保存的文件名
+                line = re.sub('<img.*?>', '<img src="' + local_src + '" style="display:block;"/>', line)
 
-            # 匹配标题，去除首尾空白
-            title = soup.select('h2.rich_media_title')[0].get_text()
-            title = re.sub('\s+', '', title)
-            # 如果标题出问题打开下面一条注释，多匹配一次。
-            # title = re.match(r'.*document\.write\("(.*)"\);}$', js_title).group(1)
+            # 去除空的 img 标签。
+            line = re.sub('<img/?>', '', line)
 
-            # 匹配作者
-            author = re.sub('\s+', '', soup.select('span#profileBt a')[0].get_text())
+            # 去除空的 strong 标签。
+            line = re.sub('<strong>\s*</strong>', '', line)
 
-            # 发布时间
-            publish_time = 000
-            # body = soup.select('div.rich_media_content ')[0].get_text().strip()
-            # body = soup.find_all("div", attrs={"class": "rich_media_content"}) # get list
+            # 去除空的 b 标签。
+            line = re.sub('<b>\s*</b>', '', line)
 
-            misc_body = soup.find_all("div", class_="rich_media_content")[0].contents
+            # 去除空的 span 标签。
+            line = re.sub('<span>\s*</span>', '', line)
 
-            # 文章主题. 去除空白行，并且拼接。
-            body = ''
-            for line in misc_body:
-                tag = re.match('<p\s*.*?>(.*)?</p>', str(line))
-                if str(tag) != 'None':
-                    if tag.group(1) == '<br/>' or tag.group(1) == '':
-                        continue
-                    else:
-                        tag2 = re.match('<span\s*.+?>(.*)?</span>', str(tag.group(1)))
-                        if str(tag2) != 'None':
-                            if tag2.group(1) == '<br/>' or tag2.group(1) == '':
-                                continue
+            # 去除空的 p 标签。
+            line = re.sub('<p>\s*</p>', '', line)
 
-                # 去除所有内联样式，原有样式在 Kindle 表现不佳。
-                line = re.sub('\s*?style="\s*.+?"', '', str(line))
-                body += str(line) + '\n'
-            body = body.strip()
-            articles.append([title, body, author, publish_time, url])
-            # break
-        return articles
+            # 去除空的 div 标签。
+            line = re.sub('<div>\s*</div>', '', line)
+
+            if line == '':
+                continue
+
+            list_body.append(line + '\n')
+        return ''.join(list_body).strip()

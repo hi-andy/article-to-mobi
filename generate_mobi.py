@@ -1,33 +1,35 @@
 #!/usr/bin/env python3
+
 import os
 import platform
 import shutil
-import sys
 
-from article import Article
 from file import File
+from zhidao_article import ZhiDao
 
 abs_path = os.getcwd() + os.sep
-book_name = sys.argv[1]
-main_url = sys.argv[2]
+book_name = '投资知道-下部'
 file_name = book_name + '.mobi'
 
-
 temp_path = abs_path + os.sep + 'temp' + os.sep
-images = abs_path + os.sep + 'images'
-cover = temp_path + 'images'
-
-# 获取文章
-art_obj = Article(main_url)
-articles = art_obj.get_article()
-
-# 输出文件
-file = File()
-file.out_mobi(temp_path, book_name, articles)
 
 # 复制图书封面
-if not os.path.exists(cover):
-    shutil.copytree(images, cover)
+cover = abs_path + os.sep + 'cover'
+booK_cover = temp_path + 'cover'
+if not os.path.exists(booK_cover):
+    shutil.copytree(cover, booK_cover)
+
+# 复制默认图片（有的图片链接失效，获取不到）
+default_img = abs_path + os.sep + 'images'
+img_dir = temp_path + 'images'
+if not os.path.exists(img_dir):
+    shutil.copytree(default_img, img_dir)
+
+# 获取文章（文章模型）
+articles = ZhiDao(temp_path).get_article()
+
+# 输出文件
+File().out_mobi(temp_path, book_name, articles)
 
 # 生成 mobi 文件
 if 'Windows' == platform.system():

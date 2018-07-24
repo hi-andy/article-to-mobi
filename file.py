@@ -23,7 +23,8 @@ class File(object):
             self.out_html(path, full_file_name, title, body)
 
             # opf 列表
-            opf_item.append('\t<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>\n'.format(file_name, full_file_name))
+            opf_item.append('\t<item id="{0}" media-type="text/x-oeb1-document" href="{1}"></item>\n'.format(file_name,
+                                                                                                             full_file_name))
             opf_itemref.append('\t<itemref idref="%s"/>\n' % file_name)
 
             # 目录列表
@@ -57,7 +58,7 @@ class File(object):
                     '\t\t<navLabel>\n'
                     '\t\t\t<text>目录</text>\n'
                     '\t\t</navLabel>\n'
-                    '\t\t<content src="toc.html#toc"/>\n'
+                    '\t\t<content src="toc.html"/>\n'
                     '\t</navPoint>\n'
                     '{1}'
                     '</navMap >\n'
@@ -76,7 +77,7 @@ class File(object):
                     '\t<dc:Copyrights>文章版权归原作者所有</dc:Copyrights>\n'
                     '\t<dc:Publisher>Andy</dc:Publisher>\n'
                     '\t<x-metadata>\n'
-                    '\t\t<EmbeddedCover>images/cover.jpg</EmbeddedCover>\n'
+                    '\t\t<EmbeddedCover>cover/cover.jpg</EmbeddedCover>\n'
                     '\t</x-metadata>\n'
                     '</dc-metadata>\n'
                     '</metadata>\n'
@@ -94,8 +95,8 @@ class File(object):
                     '</guide>\n'
                     '</package>'.format(book_name, opf_item, opf_itemref))
 
+    # 生成目录文件
     def out_content(self, path, content_item):
-        # 生成目录文件
         with open(path + 'toc.html', 'a', encoding='utf-8') as f:
             f.write('<!DOCTYPE html>\n'
                     '<html xmlns="http://www.w3.org/1999/xhtml">\n'
@@ -104,15 +105,15 @@ class File(object):
                     '\t<title>目录</title>\n'
                     '</head>\n'
                     '<body>\n'
-                    '\t<h1 id="toc">文章目录</h1>\n'
+                    '\t<h1>文章目录</h1>\n'
                     '\t<ul>\n'
                     '{0}'
                     '\t</ul>\n'
                     '</body>\n'
                     '</html>'.format(content_item))
 
+    # 每篇文章，单独一个文件
     def out_html(self, path, full_file_name, title, body):
-        # 每篇文章，单独一个文件
         with open(path + full_file_name, 'w', encoding='utf-8') as f:
             f.write('<!DOCTYPE html>\n'
                     '<html xmlns="http://www.w3.org/1999/xhtml">\n'
