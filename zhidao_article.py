@@ -46,9 +46,10 @@ class ZhiDao(Article):
             entry_desc = soup.find("div", class_="entry-desc").contents
             desc_text = []
             for line in entry_desc:
+                line = str(line).strip()
                 if line == '':
                     continue
-                desc_text.append(str(line))
+                desc_text.append(line)
             body = ''.join(desc_text).strip()
 
             # 处理文章主体。
