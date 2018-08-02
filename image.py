@@ -5,11 +5,13 @@ import re
 
 import cairosvg
 import requests
+from PIL import Image, ImageDraw, ImageFont
 from requests import exceptions
 
 
-class Image(object):
+class Picture(object):
 
+    # 保存插图
     def save(self, img_url, path='./images'):
 
         if not os.path.exists(path):
@@ -52,6 +54,24 @@ class Image(object):
             return '0.png'
         except exceptions.ConnectionError as e:
             return '0.png'
+
+    # 封面图片添加标题 & 副标题。
+    def cover(self, title, subtitle):
+        img = Image.open('./cover/cover.jpg')
+        (img_w, img_h) = img.size
+
+        title_font = ImageFont.truetype('./fonts/Baoli.ttc', int(img_h / 16))
+        subtitle_font = ImageFont.truetype('./fonts/Baoli.ttc', int(img_h / 25))
+
+        draw = ImageDraw.Draw(img)
+
+        title_w, title_h = draw.textsize(title, font=title_font)
+        subtitle_w, subtitle_h = draw.textsize(subtitle, font=subtitle_font)
+
+        draw.text(((img_w - title_w) / 2, (img_h - title_h) / 9), title, (255, 255, 255), font=title_font)
+        draw.text(((img_w - subtitle_w) / 2, (img_h - subtitle_h) / 1.15), subtitle, (255, 255, 255), font=subtitle_font)
+
+        img.save('./images/cover.jpg', 'jpeg')
 
     def random_string(self, length=8):
 

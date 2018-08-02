@@ -1,12 +1,12 @@
 import re
 
-from image import Image
+from image import Picture
 
 
 class Article(object):
 
     def article_body(self, body, image_path):
-        image = Image()
+        image = Picture()
         list_body = []
         for line in body:
 

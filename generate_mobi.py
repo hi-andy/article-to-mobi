@@ -6,18 +6,18 @@ import shutil
 
 from file import File
 from zhihu_article import ZhiHu
+from image import Picture
 
 abs_path = os.getcwd() + os.sep
-book_name = '知乎-财务包子铺'
+book_name = '知乎 - 财务包子铺'
+author = '整理发布：Andy'
 file_name = book_name + '.mobi'
 
 temp_path = abs_path + os.sep + 'temp' + os.sep
 
-# 复制图书封面
-cover = abs_path + os.sep + 'cover'
-booK_cover = temp_path + 'cover'
-if not os.path.exists(booK_cover):
-    shutil.copytree(cover, booK_cover)
+# 图书封面标题 & 副标题
+image = Picture()
+image.cover(book_name, author)
 
 # 复制默认图片（有的图片链接失效，获取不到）
 default_img = abs_path + os.sep + 'images'

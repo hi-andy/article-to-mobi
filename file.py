@@ -77,7 +77,7 @@ class File(object):
                     '\t<dc:Copyrights>文章版权归原作者所有</dc:Copyrights>\n'
                     '\t<dc:Publisher>Andy</dc:Publisher>\n'
                     '\t<x-metadata>\n'
-                    '\t\t<EmbeddedCover>cover/cover.jpg</EmbeddedCover>\n'
+                    '\t\t<EmbeddedCover>images/cover.jpg</EmbeddedCover>\n'
                     '\t</x-metadata>\n'
                     '</dc-metadata>\n'
                     '</metadata>\n'
