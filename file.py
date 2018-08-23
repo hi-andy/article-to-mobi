@@ -17,6 +17,11 @@ class File(object):
             index = key + 1
             file_name = 'article%s' % index
             full_file_name = 'article%s.html' % index
+
+            # 使用文章标题（中文）作为文件名，考虑到索引性能可能不会太好，也暂时没有必要这样做。
+            # file_name = article[0]
+            # full_file_name = article[0] + '.html'
+
             title = article[0]
             body = article[1]
 

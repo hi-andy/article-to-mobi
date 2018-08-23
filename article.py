@@ -12,6 +12,9 @@ class Article(object):
 
             line = str(line).strip()
 
+            # 去除空的 img 标签。
+            line = re.sub('<img/?>', '', line)
+
             # 先把 img 标签的 src 取出。然后去除所有标签属性、内联样式
             # 因为原有样式在 Kindle 表现不佳，并且生成电子书的时候可能会有警告（line-height)。
             # 若要改变书的排版布局，也可以在此为指定的标签添加自己的样式：class,id。然后再定义自己的 css 文件即可。

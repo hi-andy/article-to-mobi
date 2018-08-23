@@ -1,3 +1,5 @@
+from difflib import SequenceMatcher
+
 import bs4
 import requests
 
@@ -11,7 +13,7 @@ class ZhiDao(Article):
 
     def get_url(self):
         urls = []
-        for num in range(18, 35):
+        for num in range(1, 18):
             url = 'http://zhidao.agutong.com/entries?page=' + str(num)
             response = requests.get(url)
             soup = bs4.BeautifulSoup(response.text, "html5lib")
@@ -23,12 +25,12 @@ class ZhiDao(Article):
         return urls
 
     def get_article(self):
-        urls = self.get_url()
-        # urls = ['http://zhidao.agutong.com/entries/56853188a2b470000df8a258']
+        # urls = self.get_url()
+        urls = ['http://zhidao.agutong.com/entries/5644243f2920920010407cde']
         articles = []
         i = 0
         for url in urls:
-            url = 'http://zhidao.agutong.com' + url
+            # url = 'http://zhidao.agutong.com' + url
 
             i += 1
             print('文章{0}：{1}'.format(i, url))
@@ -60,4 +62,18 @@ class ZhiDao(Article):
 
             articles.append([title, body, url])
             # break
+
+        # 去除相同条目（一文多名）
+        s = SequenceMatcher()
+        first_entry = ''
+        for entry in articles:
+            for entry2 in articles:
+                s.set_seqs(entry[1], entry2[1])
+                if round(s.quick_ratio(), 3) > 0.95:
+                    articles.remove(entry)
+                    break
+            if not first_entry:
+                first_entry = entry
+
+        articles.insert(0, first_entry)
         return articles
