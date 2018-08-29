@@ -56,7 +56,7 @@ class Picture(object):
             return '0.png'
 
     # 封面图片添加标题 & 副标题。
-    def cover(self, title, subtitle, source, distination):
+    def cover(self, title, subtitle, source, destination):
         img = Image.open(source)
         (img_w, img_h) = img.size
 
@@ -71,7 +71,7 @@ class Picture(object):
         draw.text(((img_w - title_w) / 2, (img_h - title_h) / 9), title, (255, 255, 255), font=title_font)
         draw.text(((img_w - subtitle_w) / 2, (img_h - subtitle_h) / 1.15), subtitle, (255, 255, 255), font=subtitle_font)
 
-        img.save(distination, 'jpeg')
+        img.save(destination, 'jpeg')
 
     def random_string(self, length=8):
 
