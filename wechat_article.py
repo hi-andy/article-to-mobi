@@ -1,3 +1,4 @@
+import os
 import re
 
 import bs4
@@ -11,11 +12,17 @@ class WeChat(Article):
     def __init__(self, url, path):
         self.main_url = url
         self.root_path = path
+        self.headers = {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
+        }
 
     def get_url(self, main_url):
-        response = requests.get(main_url)
+        response = requests.get(main_url, headers=self.headers)
         soup = bs4.BeautifulSoup(response.text, "html5lib")
-        urls = [a.attrs.get('href') for a in soup.select('ul.list-paddingleft-2 a[href^=http://mp.weixin.qq.com/s?]')]
+        # urls = [a.attrs.get('href') for a in soup.select('ul.list-paddingleft-2 a[href^=http://mp.weixin.qq.com/s?]')] 示例网址获取
+        urls = [a.attrs.get('href') for a in soup.select('div.rich_media_content  a[href^=http://mp.weixin.qq.com/s?]')]
+
         if not urls:
             urls = [main_url]
         return urls
@@ -47,8 +54,9 @@ class WeChat(Article):
 
             misc_body = soup.find_all("div", class_="rich_media_content")[0].contents
 
+
             # 文章主题
-            body = Article.article_body(misc_body, self.root_path + '/images')
+            body = Article.article_body('', misc_body, self.root_path + 'images')
 
             articles.append([title, body, author, publish_time, url])
             # break

@@ -5,6 +5,9 @@ from image import Picture
 
 class Article(object):
 
+    def __init__(self, ):
+        pass
+
     def article_body(self, body, image_path):
         image = Picture()
         list_body = []

@@ -3,7 +3,7 @@ import os
 
 class File(object):
 
-    def out_mobi(self, path, book_name, articles):
+    def out_files(self, path, book_name, articles):
 
         opf_item = []
         opf_itemref = []
